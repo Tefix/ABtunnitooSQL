@@ -101,7 +101,7 @@ select * from Person
 alter table Person
 add City nvarchar(25)
 
--- ?
+-- Tõmbab kõik andmed tabelist Person, kus veeru City väärtus on 'Gotham'.
 select * from Person where City = 'Gotham'
 
 
@@ -109,26 +109,26 @@ select * from Person where City = 'Gotham'
 select * from Person where City <> 'Gotham'
 select * from Person where City != 'Gotham'
 
--- ?
+--  Vanuse järgi valik.
 select *from Person where Age = 100 or 
 Age = 50 or Age = 20
 select * from Person where Age in (100, 50, 20)
 
 
---- ?
+--- Valik linnast, mis algab tähega "n" ja valik e-posti aadressidest, mis sisaldavad "@"
 select * from Person where City like 'n%'
 select * from Person where Email like '%@%'
 
--- ?
+-- Valik kirjetest, kus veerus Email ei ole "@"
 select * from Person where Email not like '%@%'
 
 --- näitab, kelle on emailis ees ja peale @-märki
 -- ainult üks täht
 select * from Person where Email like '_@_.com'
 
---?
+--Valik kirjetest, kus nimi ei alga tähtedega "W", "A" või "S".
 select * from Person where Name like '[^WAS]%'
---- ?
+--- Valik kirjetest, kus linn on 'Gotham' või 'New York' ja vanus on 40 või rohkem.
 select * from Person where (City = 'Gotham' or City = 'New York')
 and Age >= 40
 
