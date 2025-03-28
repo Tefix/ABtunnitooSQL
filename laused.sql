@@ -28,11 +28,10 @@ GenderId int
 )
 
 --- andmete sisestamine tabelisse
-insert into Gender (Id, Gender)
+insert into Gender (Gender)
 values (1, 'Female')
 insert into Gender (Id, Gender)
 values (2, 'Male')
-
 --- Lisab välisvõtme tabelisse 
 alter table Person add constraint tblPerson_GenderId_FK
 foreign key (GenderId) references Gender(Id)
@@ -53,15 +52,14 @@ values (6, 'Antman', 'ant"ant.com', 2)
 insert into Person (Id, Name, Email, GenderId)
 values (7, 'Spiderman', 'spider@spiderman.com', 2)
 
-
 -- vaatame tabeli andmeid
 select * from Person
 
---- ?
+--- Eemaldab välisvõtme piiramise 
 alter table Person
 drop constraint tblPerson_GenderId_FK
 
--- ?
+-- Lisab uue kirje tabelisse
 insert into Gender (Id, Gender)
 values (3, 'Unknown')
 -- lisame võõrvõtme uuesti
@@ -76,7 +74,7 @@ select * from Gender
 insert into Person (Id, Name, Email)
 values (8, 'Test', 'Test')
 
----?
+---Lisab uue veeru Age tabelisse Person
 alter table Person
 add Age nvarchar(10)
 
