@@ -19,17 +19,25 @@ Id int NOT NULL primary key,
 Gender nvarchar(10) not null
 )
 
+create table Person
+(
+Id int not null primary key,
+Name nvarchar(25),
+Email nvarchar(30),
+GenderId int
+)
+
 --- andmete sisestamine tabelisse
 insert into Gender (Id, Gender)
 values (1, 'Female')
 insert into Gender (Id, Gender)
 values (2, 'Male')
 
---- ?
+--- Lisab välisvõtme tabelisse 
 alter table Person add constraint tblPerson_GenderId_FK
 foreign key (GenderId) references Gender(Id)
 
--- ?
+-- Lisab uue kirje tabelisse
 insert into Person (Id, Name, Email, GenderId)
 values (1, 'Supermees', 's@s.com', 2)
 insert into Person (Id, Name, Email, GenderId)
@@ -44,6 +52,7 @@ insert into Person (Id, Name, Email, GenderId)
 values (6, 'Antman', 'ant"ant.com', 2)
 insert into Person (Id, Name, Email, GenderId)
 values (7, 'Spiderman', 'spider@spiderman.com', 2)
+
 
 -- vaatame tabeli andmeid
 select * from Person
